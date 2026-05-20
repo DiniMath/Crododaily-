@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from controller.carreiraController import CarreiraController
 
 app = Flask(__name__)
+
+carreiracontroler = CarreiraController()
 
 @app.route('/')
 def inicial():
@@ -8,7 +11,7 @@ def inicial():
 
 @app.route('/carreira')
 def carreira():
-    return render_template('carreira.html')
+    return carreiracontroler.list()
 
 @app.route('/social')
 def social():

@@ -2,13 +2,18 @@ from flask import render_template, request
 
 from model.carreiraModel import CarreiraModel
 
+from dao.carreiraDao import CarreiraDao
+
 class CarreiraController:
     def __init__(self):
-        pass
+        self.carreiraDao = CarreiraDao()
 
-    def mostrarDados(self):
-        x = request.args.get("avaliacao")
 
-        oCarreiraModel = CarreiraModel(x)
+    def list(self):
+        areacarreira = self.carreiraDao.list()
+        return render_template(
+            "carreira.html",
+            areacarreira=areacarreira
+        )
 
-        return render_template("carreira.html", msg=oCarreiraModel.mostrarDados())
+      
