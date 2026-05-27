@@ -5,7 +5,7 @@ class Conexao:
     @staticmethod
     def conectar():
         return mysql.connector.connect(
-            host= "loacalhost",
+            host= "localhost",
             user = "root",
             password = "ifsp",
             database = "crocodaily"

@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 
 from model.carreiraModel import CarreiraModel
 
@@ -9,11 +9,14 @@ class CarreiraController:
         self.carreiraDao = CarreiraDao()
 
 
-    def list(self):
-        areacarreira = self.carreiraDao.list()
-        return render_template(
-            "carreira.html",
-            areacarreira=areacarreira
+    def insert(self):
+        avaliacao = request.form['avaliacao']
+        carreira = CarreiraModel(
+            None,
+            avaliacao
         )
+        self.carreiraDao.insert(carreira)
+
+        return redirect(url_for('carreira'))
 
       

@@ -1,20 +1,19 @@
 class CarreiraModel:
     def __init__(self, idCarreira, avaliacao):
-        self.__ = idCarreira
-        self.__ = avaliacao
+        
+        self.__idCarreira = idCarreira
+        self.__avaliacao = avaliacao
 
-    def getCarreira(self):
-        return(self.__idCarreira)
+  
+    def getIdCarreira(self):
+        return self.__idCarreira
     
-    def setCarreira(self, idCarreira):
+    def setIdCarreira(self, idCarreira):
         self.__idCarreira = idCarreira
 
-
-    def getCarreira(self):
-        return(self.__avaliacao)
     
-    def setCarreira(self, avaliacao):
+    def getAvaliacao(self):
+        return self.__avaliacao
+    
+    def setAvaliacao(self, avaliacao):
         self.__avaliacao = avaliacao
-    
-    
-        

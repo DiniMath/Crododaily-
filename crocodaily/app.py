@@ -1,20 +1,32 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from controller.carreiraController import CarreiraController
+from controller.socialController import SocialController
 
 app = Flask(__name__)
 
 carreiracontroler = CarreiraController()
+socialcontroller = SocialController()
 
 @app.route('/')
 def inicial():
     return render_template('inicial.html')
 
-@app.route('/carreira')
+@app.route('/carreira', methods=['GET', 'POST'])
 def carreira():
-    return carreiracontroler.list()
+    if request.method == 'POST':
+        controller = CarreiraController()
+        return controller.insert()
+    
+    return render_template('carreira.html')
 
-@app.route('/social')
+
+
+@app.route('/social', methods= ['GET', 'POST'])
 def social():
+    if request.method == 'POST':
+        controller = SocialController()
+        return controller.insert()
+    
     return render_template('social.html')
 
 @app.route('/geral')

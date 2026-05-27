@@ -1,14 +1,22 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 
 from model.socialModel import SocialModel
 
-class SocialModel:
+from dao.socialDao import SocialDao
+
+class SocialController:
     def __init__(self):
-        pass
+        self.socialDao = SocialDao()
 
-    def mostrarDados(self):
-        x = request.args.get("avaliacao")
 
-        oSocialModel = SocialModel(x)
+    def insert(self):
+        avaliacao = request.form['avaliacao']
+        social = SocialModel(
+            None,
+            avaliacao
+        )
+        self.socialDao.insert(social)
 
-        return render_template("social.html", msg=oSocialModel.mostrarDados())
+        return redirect(url_for('social'))
+
+      

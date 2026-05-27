@@ -1,18 +1,18 @@
 from dao.conexao import Conexao
-from model.carreiraModel import CarreiraModel
+from model.socialModel import SocialModel
 
-class CarreiraDao:
+class SocialDao:
 
-    def insert(self, carreira):
+    def insert(self, social):
         conexao = Conexao.conectar()
         cursor = conexao.cursor()
 
         sql = """
-            INSERT INTO carreira (avaliacao)
+            INSERT INTO social (avaliacao)
             VALUES (%s)
         """
 
-        valores = (carreira.getAvaliacao(),)
+        valores = (social.getAvaliacao(),)
 
         cursor.execute(sql, valores)
 
